@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use Illuminate\Support\Facades\Auth;
+
 class PatientAuthController extends Controller {
   public function register(Request $request) {
 
@@ -31,10 +33,15 @@ class PatientAuthController extends Controller {
 
     // Data Validation
     $validatedData = $request->validate([
-      'email' 		=> 'required|email',
+      'email' 		=> 'required',
       'password'  	    => 'required',
     ]);
 
-    return $request -> all();
+    // Athentication process
+    if ( Auth::guard('patient') -> attempt([ 'email' => $request -> email, 'password' => $request -> password ]) || Auth::guard('patient') -> attempt([ 'mobile' => $request -> email, 'password' => $request -> password ]) )  {
+      return redirect() -> route('patient.dash.page');
+    } else {
+      return redirect() -> route('login.page') -> with('danger', 'wrong Email/password');
+    }
   }
 }
