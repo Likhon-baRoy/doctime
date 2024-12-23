@@ -44,4 +44,10 @@ class PatientAuthController extends Controller {
       return redirect() -> route('login.page') -> with('danger', 'wrong Email/password');
     }
   }
+
+  public function logout() {
+    Auth::guard('patient') -> logout();
+
+    return redirect() -> route('login.page');
+  }
 }
