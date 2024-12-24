@@ -20,7 +20,9 @@ Route::get('/patient-settings', [PatientProfileController::class, 'showPatientSe
 Route::get('/patient-password', [PatientProfileController::class, 'showPatientPasswordPage'])
      ->name('patient.password.page')
      ->middleware('patient');
-
+Route::post('/patient-password', [PatientProfileController::class, 'patientPasswordChange'])
+     ->name('patient.password.change')
+     ->middleware('patient');
 // Patient Authentication Routes
 Route::post('/patient-register', [ PatientAuthController::class, 'register' ]) -> name('patient.register');
 Route::post('/patient-login', [ PatientAuthController::class, 'login' ]) -> name('patient.login');
