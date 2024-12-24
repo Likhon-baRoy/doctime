@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Auth\PatientAuthController;
+use App\Http\Controllers\PatientProfileController;
 
 // Frontend Controller
 Route::get('/', [ FrontendController::class, 'showHomePage' ]) -> name('home.page');
@@ -13,7 +14,12 @@ Route::get('/patient-register', [ FrontendController::class, 'showPatientRegiste
 Route::get('/patient-dashboard', [FrontendController::class, 'showPatientDashPage'])
      ->name('patient.dash.page')
      ->middleware('patient');
-
+Route::get('/patient-settings', [PatientProfileController::class, 'showPatientSettingsPage'])
+     ->name('patient.settings.page')
+     ->middleware('patient');
+Route::get('/patient-password', [PatientProfileController::class, 'showPatientPasswordPage'])
+     ->name('patient.password.page')
+     ->middleware('patient');
 
 // Patient Authentication Routes
 Route::post('/patient-register', [ PatientAuthController::class, 'register' ]) -> name('patient.register');

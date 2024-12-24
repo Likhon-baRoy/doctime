@@ -120,8 +120,8 @@
                                   <h7>{{ Auth::guard('patient') -> user() -> mobile }}</h7>
 							    </div>
 							  </div>
-							  <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
-							  <a class="dropdown-item" href="doctor-profile-settings.html">Profile Settings</a>
+							  <a class="dropdown-item" href="{{ route('patient.dash.page') }}">Dashboard</a>
+							  <a class="dropdown-item" href="{{ route('patient.settings.page') }}">Profile Settings</a>
 							  <a class="dropdown-item" href="{{ route('patient.logout') }}">Logout</a>
 						    </div>
 						  </li>
