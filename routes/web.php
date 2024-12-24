@@ -27,6 +27,7 @@ Route::post('/patient-password', [PatientProfileController::class, 'patientPassw
 Route::post('/patient-register', [ PatientAuthController::class, 'register' ]) -> name('patient.register');
 Route::post('/patient-login', [ PatientAuthController::class, 'login' ]) -> name('patient.login');
 Route::get('/patient-logout', [ PatientAuthController::class, 'logout' ]) -> name('patient.logout');
+Route::post('/patient_account_activation/{token?}', [ PatientAuthController::class, 'patientAccountActivation' ]) -> name('patient.account.activation');
 
 // Doctor Pages
 Route::get('/doctor-register', [ FrontendController::class, 'showDoctorRegisterPage' ]) -> name('doctor.reg.page');

@@ -24,7 +24,8 @@ return new class extends Migration
       $table->text('address') -> nullable();
       $table->string('country') -> nullable();
       $table->string('city') -> nullable();
-      $table->boolean('status')->default(true);
+      $table->string('access_token') -> nullable();
+      $table->boolean('status')->default(false);
       $table->boolean('trash')->default(false);
       $table->timestamps();
     });
