@@ -51,6 +51,18 @@
 	<!-- Custom JS -->
 	<script src="{{ asset('frontend/assets/js/script.js') }}"></script>
 
+    <!-- Password showing JQuery -->
+    <script type="text/javascript">
+     $('#show_pass').change(function(){
+       let attr = $('#new_pass').attr('type');
+
+       if (attr=='password') {
+         $('#new_pass').attr('type', 'text');
+       } else {
+         $('#new_pass').attr('type', 'password');
+       }
+     });
+    </script>
   </body>
 
   <!-- doccure/index.html  30 Nov 2019 04:12:03 GMT -->

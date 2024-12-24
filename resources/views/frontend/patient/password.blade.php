@@ -41,7 +41,11 @@
 					</div>
 					<div class="form-group">
 					  <label>New Password</label>
-					  <input name="pass" type="password" class="form-control">
+					  <input id="new_pass" name="pass" type="password" class="form-control">
+                      <label>
+                        <!-- it's JQuery functionality is in layouts.app -->
+                        <input id="show_pass" type="checkbox"> show password
+                      </label>
 					</div>
 					<div class="form-group">
 					  <label>Confirm Password</label>
