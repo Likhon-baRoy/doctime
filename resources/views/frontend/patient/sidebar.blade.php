@@ -4,7 +4,11 @@
 	<div class="widget-profile pro-widget-content">
 	  <div class="profile-info-widget">
 		<a href="#" class="booking-doc-img">
-		  <img src="{{ url('frontend/assets/img/patients/patient.jpg') }}" alt="User Image">
+          @if( !(Auth::guard('patient') -> user() -> photo) )
+		    <img src="{{ url('frontend/assets/img/avatar.png') }}" alt="User Image">
+          @else
+            <img src="{{ url('frontend/assets/img/patients/patient.jpg') }}" alt="User Image">
+          @endif
 		</a>
 		<div class="profile-det-info">
 		  <h3>{{ Auth::guard('patient') -> user() -> name }}</h3>
