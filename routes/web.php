@@ -6,11 +6,14 @@ use App\Http\Controllers\Auth\PatientAuthController;
 
 // Frontend Controller
 Route::get('/', [ FrontendController::class, 'showHomePage' ]) -> name('home.page');
-Route::get('/login', [ FrontendController::class, 'showLoginPage' ]) -> name('login.page');
+Route::get('/login', [ FrontendController::class, 'showLoginPage' ]) -> name('login.page') -> middleware('patient.redirect');
 
 // Patient Pages
-Route::get('/patient-register', [ FrontendController::class, 'showPatientRegisterPage' ]) -> name('patient.reg.page');
-Route::get('/patient-dashboard', [ FrontendController::class, 'showPatientDashPage' ]) -> name('patient.dash.page');
+Route::get('/patient-register', [ FrontendController::class, 'showPatientRegisterPage' ]) -> name('patient.reg.page') -> middleware('patient.redirect');
+Route::get('/patient-dashboard', [FrontendController::class, 'showPatientDashPage'])
+     ->name('patient.dash.page')
+     ->middleware('patient');
+
 
 // Patient Authentication Routes
 Route::post('/patient-register', [ PatientAuthController::class, 'register' ]) -> name('patient.register');

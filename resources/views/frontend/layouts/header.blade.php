@@ -95,9 +95,38 @@
 								<p class="contact-info-header"> +1 315 369 5943</p>
 							</div>
 						</li>
+
+                        @if( !(Auth::guard('patient') -> check()) )
 						<li class="nav-item">
 						  <a class="nav-link header-login" href="{{ route('login.page') }}">login / Signup </a>
 						</li>
+                        @endif
+
+                        @if( Auth::guard('patient') -> check() )
+                          <!-- User Menu -->
+						  <li class="nav-item dropdown has-arrow logged-item">
+						    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							  <span class="user-img">
+							    <img class="rounded-circle" src="{{ url('frontend/assets/img/doctors/doctor-thumb-02.jpg') }}" width="31" alt="Darren Elder">
+							  </span>
+						    </a>
+						    <div class="dropdown-menu dropdown-menu-right">
+							  <div class="user-header">
+							    <div class="avatar avatar-sm">
+								  <img src="{{ url('frontend/assets/img/doctors/doctor-thumb-02.jpg') }}" alt="User Image" class="avatar-img rounded-circle">
+							    </div>
+							    <div class="user-text">
+								  <h6>{{ Auth::guard('patient') -> user() -> name }}</h6>
+                                  <h7>{{ Auth::guard('patient') -> user() -> mobile }}</h7>
+							    </div>
+							  </div>
+							  <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
+							  <a class="dropdown-item" href="doctor-profile-settings.html">Profile Settings</a>
+							  <a class="dropdown-item" href="{{ route('patient.logout') }}">Logout</a>
+						    </div>
+						  </li>
+						  <!-- /User Menu -->
+                        @endif
 					</ul>
 		</nav>
 	  </header>
